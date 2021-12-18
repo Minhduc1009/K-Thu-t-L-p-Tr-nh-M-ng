@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class MinhDucCoder {
+	/*Bai tap: xoa phan tu trung lap trong mang
+	 * 
+	 * input:  1 3 2 2 5 4 6 7 7 8
+	 * 
+	 * output: 1 3 2 5 4 6 7 8
+	 */
+	public static void DeleteSame(int[] a, int n)
+	{
+		int[] b = new int[n];
+		int size = 0;
+		boolean check;
+		
+		b[0] = a[0];
+		size++;
+		
+		for (int i = 0; i < n; i++) {
+			check = false;
+			for (int j = 0; j < size; j++) {
+				if(a[i] == b[j])
+				{
+					check = true;
+					break;
+				}
+			}
+			if(!check) {
+				b[size] = a[i];
+				size++;
+			}
+		}
+		System.out.println("mang b: ");
+		for (int i = 0; i < size; i++) {
+			System.out.print(b[i] + " ");
+		}
+		a = new int[size];
+		for (int i = 0; i < size; i++) {
+			a[i] = b[i];
+		}
+		System.out.println();
+		System.out.println("mang a: ");
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + " ");
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("nhap so luong mang: ");
+		int n = sc.nextInt();
+		int[] a = new int[n];
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.print("nhap phan tu thu " +i+": ");
+			a[i] = sc.nextInt();
+		}
+		
+		DeleteSame(a, n);
+	}
+
+}
